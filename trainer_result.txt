@@ -1,0 +1,240 @@
+Starting RGB in channel :0
+46.81 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+7.47 Seconds to train SVC...
+Test Accuracy of SVC =  0.9482
+My SVC predicts:  [ 0.  1.  0.  0.  0.  1.  0.  0.  0.  0.]
+For these 10 labels:  [ 0.  1.  0.  0.  0.  1.  0.  0.  0.  0.]
+0.00174 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting RGB in channel :1
+38.31 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+7.94 Seconds to train SVC...
+Test Accuracy of SVC =  0.9558
+My SVC predicts:  [ 1.  1.  1.  1.  1.  1.  0.  1.  1.  1.]
+For these 10 labels:  [ 1.  1.  1.  1.  1.  1.  0.  1.  1.  1.]
+0.00187 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting RGB in channel :2
+38.6 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+10.74 Seconds to train SVC...
+Test Accuracy of SVC =  0.9288
+My SVC predicts:  [ 1.  1.  0.  1.  0.  1.  1.  1.  0.  0.]
+For these 10 labels:  [ 1.  1.  0.  1.  0.  1.  1.  1.  0.  0.]
+0.00175 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting RGB in channel :ALL
+107.23 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+25.52 Seconds to train SVC...
+Test Accuracy of SVC =  0.9707
+My SVC predicts:  [ 0.  0.  1.  1.  0.  1.  1.  1.  1.  1.]
+For these 10 labels:  [ 0.  0.  1.  1.  0.  1.  1.  1.  1.  1.]
+0.00299 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HSV in channel :0
+43.69 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+13.69 Seconds to train SVC...
+Test Accuracy of SVC =  0.904
+My SVC predicts:  [ 1.  0.  0.  1.  0.  0.  0.  1.  1.  0.]
+For these 10 labels:  [ 1.  0.  0.  0.  1.  0.  0.  1.  1.  0.]
+0.00177 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HSV in channel :1
+42.18 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+18.49 Seconds to train SVC...
+Test Accuracy of SVC =  0.9102
+My SVC predicts:  [ 0.  1.  0.  0.  0.  0.  0.  1.  0.  1.]
+For these 10 labels:  [ 0.  1.  0.  1.  0.  0.  0.  1.  0.  1.]
+0.00177 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HSV in channel :2
+41.44 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+8.46 Seconds to train SVC...
+Test Accuracy of SVC =  0.9505
+My SVC predicts:  [ 1.  0.  0.  1.  1.  0.  1.  0.  1.  1.]
+For these 10 labels:  [ 1.  1.  0.  1.  1.  0.  1.  0.  1.  1.]
+0.00202 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HSV in channel :ALL
+121.18 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+15.65 Seconds to train SVC...
+Test Accuracy of SVC =  0.9837
+My SVC predicts:  [ 1.  0.  1.  0.  1.  0.  0.  1.  0.  1.]
+For these 10 labels:  [ 1.  0.  1.  0.  1.  0.  0.  1.  0.  1.]
+0.00267 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting LUV in channel :0
+45.15 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+7.91 Seconds to train SVC...
+Test Accuracy of SVC =  0.9476
+My SVC predicts:  [ 1.  1.  1.  1.  1.  0.  0.  1.  0.  1.]
+For these 10 labels:  [ 1.  1.  1.  1.  1.  0.  0.  1.  0.  1.]
+0.00178 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting LUV in channel :1
+41.56 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+13.89 Seconds to train SVC...
+Test Accuracy of SVC =  0.9257
+My SVC predicts:  [ 1.  1.  0.  1.  0.  1.  0.  1.  1.  1.]
+For these 10 labels:  [ 1.  1.  0.  1.  0.  1.  1.  0.  1.  1.]
+0.00179 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting LUV in channel :2
+42.44 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+18.48 Seconds to train SVC...
+Test Accuracy of SVC =  0.895
+My SVC predicts:  [ 0.  0.  0.  1.  1.  0.  1.  0.  0.  1.]
+For these 10 labels:  [ 0.  0.  0.  1.  1.  0.  1.  0.  0.  1.]
+0.00182 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting LUV in channel :ALL
+123.7 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+3.37 Seconds to train SVC...
+Test Accuracy of SVC =  0.9851
+My SVC predicts:  [ 0.  1.  1.  1.  1.  1.  1.  0.  1.  0.]
+For these 10 labels:  [ 0.  0.  1.  1.  1.  1.  1.  1.  1.  0.]
+0.00299 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HLS in channel :0
+44.45 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+15.79 Seconds to train SVC...
+Test Accuracy of SVC =  0.9116
+My SVC predicts:  [ 0.  1.  0.  0.  1.  0.  1.  1.  0.  0.]
+For these 10 labels:  [ 0.  1.  1.  0.  1.  1.  1.  1.  1.  0.]
+0.00231 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HLS in channel :1
+40.74 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+8.21 Seconds to train SVC...
+Test Accuracy of SVC =  0.9482
+My SVC predicts:  [ 1.  0.  1.  1.  0.  1.  0.  0.  1.  1.]
+For these 10 labels:  [ 1.  0.  1.  1.  0.  1.  0.  0.  1.  1.]
+0.00174 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HLS in channel :2
+46.62 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+21.89 Seconds to train SVC...
+Test Accuracy of SVC =  0.9141
+My SVC predicts:  [ 0.  1.  0.  1.  0.  0.  1.  0.  0.  0.]
+For these 10 labels:  [ 0.  1.  0.  1.  0.  0.  1.  0.  0.  0.]
+0.0021 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting HLS in channel :ALL
+128.81 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+19.5 Seconds to train SVC...
+Test Accuracy of SVC =  0.9851
+My SVC predicts:  [ 1.  1.  0.  1.  0.  0.  0.  0.  0.  0.]
+For these 10 labels:  [ 1.  1.  1.  1.  0.  0.  0.  0.  0.  0.]
+0.0036 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YUV in channel :0
+42.06 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+7.59 Seconds to train SVC...
+Test Accuracy of SVC =  0.9569
+My SVC predicts:  [ 1.  0.  1.  1.  1.  1.  0.  0.  1.  0.]
+For these 10 labels:  [ 1.  0.  1.  1.  1.  1.  0.  0.  1.  0.]
+0.00121 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YUV in channel :1
+47.19 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+14.03 Seconds to train SVC...
+Test Accuracy of SVC =  0.933
+My SVC predicts:  [ 0.  1.  0.  0.  1.  0.  0.  1.  0.  0.]
+For these 10 labels:  [ 0.  1.  0.  0.  1.  0.  0.  1.  0.  0.]
+0.00182 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YUV in channel :2
+44.0 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+28.03 Seconds to train SVC...
+Test Accuracy of SVC =  0.8972
+My SVC predicts:  [ 1.  1.  1.  1.  1.  0.  1.  0.  0.  1.]
+For these 10 labels:  [ 1.  1.  1.  1.  1.  0.  0.  1.  0.  1.]
+0.00357 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YUV in channel :ALL
+118.16 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+14.25 Seconds to train SVC...
+Test Accuracy of SVC =  0.9859
+My SVC predicts:  [ 1.  0.  1.  1.  1.  0.  0.  1.  0.  1.]
+For these 10 labels:  [ 1.  0.  1.  1.  1.  0.  0.  1.  0.  1.]
+0.00306 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YCrCb in channel :0
+42.02 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+7.9 Seconds to train SVC...
+Test Accuracy of SVC =  0.9485
+My SVC predicts:  [ 0.  1.  1.  1.  0.  0.  0.  0.  1.  1.]
+For these 10 labels:  [ 0.  0.  1.  1.  0.  0.  0.  0.  1.  1.]
+0.00175 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YCrCb in channel :1
+39.33 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+13.4 Seconds to train SVC...
+Test Accuracy of SVC =  0.9293
+My SVC predicts:  [ 0.  0.  0.  0.  0.  0.  1.  0.  1.  0.]
+For these 10 labels:  [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
+0.00121 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YCrCb in channel :2
+44.49 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 1764
+20.45 Seconds to train SVC...
+Test Accuracy of SVC =  0.8936
+My SVC predicts:  [ 1.  0.  1.  0.  1.  0.  0.  1.  0.  1.]
+For these 10 labels:  [ 1.  0.  1.  0.  1.  0.  0.  1.  0.  1.]
+0.00204 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)
+Starting YCrCb in channel :ALL
+115.13 Seconds to extract HOG features...
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 5292
+13.69 Seconds to train SVC...
+Test Accuracy of SVC =  0.9876
+My SVC predicts:  [ 1.  0.  1.  0.  0.  1.  0.  0.  1.  1.]
+For these 10 labels:  [ 1.  0.  1.  0.  0.  1.  0.  0.  1.  1.]
+0.00295 Seconds to predict 10 labels with SVC
+StandardScaler(copy=True, with_mean=True, with_std=True)

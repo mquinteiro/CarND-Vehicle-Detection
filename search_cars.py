@@ -18,7 +18,7 @@ hist_bins = 32
 
 
 # Define a single function that can extract features using hog sub-sampling and make predictions
-def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins):
+def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins,cells_per_step = 2):
     draw_img = np.copy(img)
     #img = img.astype(np.float32) / 255 # I dont change to (0,255) because it is normailzed by scaler
     rectangles = []
@@ -40,9 +40,9 @@ def find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, ce
     # 64 was the orginal sampling rate, with 8 cells and 8 pix per cell
     window = 64
     nblocks_per_window = (window // pix_per_cell) - cell_per_block + 1
-    cells_per_step = 2  # Instead of overlap, define how many cells to step
-    nxsteps = (nxblocks - nblocks_per_window) // cells_per_step
-    nysteps = (nyblocks - nblocks_per_window) // cells_per_step
+      # Instead of overlap, define how many cells to step
+    nxsteps = (nxblocks - nblocks_per_window) // cells_per_step +1
+    nysteps = (nyblocks - nblocks_per_window) // cells_per_step +1
 
     # Compute individual channel HOG features for the entire image
     hog1 = get_hog_features(ch1, orient, pix_per_cell, cell_per_block, feature_vec=False)
@@ -88,7 +88,7 @@ def search_cars(img,areas):
     rectangles=[]
     for area in areas:
         rc = find_cars(img, area[0], area[1], area[2], svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size,
-                       hist_bins)
+                       hist_bins,cells_per_step=area[3])
         if len(rc) > 0:
             if len(rectangles) > 0:
                 rectangles = np.vstack((rectangles, rc))
@@ -97,39 +97,80 @@ def search_cars(img,areas):
     return rectangles
 
 
-for i in [1,2,3,4,5,6]:
-    
-    img = cv2.imread('test_images/test'+str(i)+'.jpg')
-    areas = [[400,656,2],[400,625,1.5],[400,550,1.2],[400,500,1],[400,450,0.8]]
-    heat = np.zeros_like(img[:, :, 0]).astype(np.float)
-    rectangles = search_cars(img,areas)
-    out_img = img.copy()
+# for i in [1,2,3,4,5,6]:
+#     img = cv2.imread('test_images/test'+str(i)+'.jpg')
+
+cleanImage = False
+videoFileName = 'project_video.mp4'
+cap = cv2.VideoCapture(videoFileName)
+cap.set(cv2.CAP_PROP_POS_FRAMES, 250)
+[valid, img] = cap.read()
+heat = np.zeros_like(img[:, :, 0]).astype(np.float)
+frame = 0
+while valid:
+    frame+=1
+    areas = [[350,625,2.5,2],[350,558,2,2],[400, 540, 1.5,4],[400, 512, 1,8],[400, 464, .5,8]]
+    heat = heat / 2
+    rectangles1 = search_cars(img,[areas[0]])
+    rectangles2 = search_cars(img, [areas[1]])
+    rectangles3 = search_cars(img, [areas[2]])
+    rectangles4 = search_cars(img, [areas[3]])
+    rectangles5 = search_cars(img, [areas[4]])
+    rectangles = rectangles1 + rectangles2 +rectangles3 +rectangles4 +rectangles5
     if len(rectangles) > 0:
         heat = add_heat(heat, rectangles)
-        heat = apply_threshold(heat, 1)
+        heat = apply_threshold(heat, 2)
         heatmap = np.clip(heat, 0, 255)
         labels = label(heatmap)
-        draw_img = draw_labeled_bboxes(np.copy(img), labels)
+        out_img = img.copy()
+
+        for rec in rectangles1:
+            cv2.rectangle(out_img, tuple(rec[0]),
+                          tuple(rec[1]), (255, 255, 0), 2)
+        for rec in rectangles2:
+            cv2.rectangle(out_img, tuple(rec[0]),
+                          tuple(rec[1]), (0, 255, 0), 2)
+        for rec in rectangles3:
+            cv2.rectangle(out_img, tuple(rec[0]),
+                          tuple(rec[1]), (0, 0, 255), 2)
+        for rec in rectangles4:
+            cv2.rectangle(out_img, tuple(rec[0]),
+                          tuple(rec[1]), (255, 0, 255), 2)
+        for rec in rectangles5:
+            cv2.rectangle(out_img, tuple(rec[0]),
+                          tuple(rec[1]), (0,255, 255), 2)
+        draw_img = draw_labeled_bboxes(out_img, labels)
         cv2.imshow("ventana", draw_img)
+        cv2.imwrite("finalVideo/frame"+str(frame)+".png",draw_img)
         cv2.waitKey(1)
-        fig = plt.figure()
-        plt.subplot(121)
-        plt.imshow(draw_img)
-        plt.title('Car Positions')
-        plt.subplot(122)
-        plt.imshow(heatmap, cmap='hot')
-        plt.title('Heat Map')
-        fig.tight_layout()
+    else:
+        cv2.imshow("ventana", img)
+        cv2.imwrite("finalVideo/frame" + str(frame) + ".png", draw_img)
+        cv2.waitKey(1)
+        # fig = plt.figure()
+        # plt.subplot(121)
+        # plt.imshow(draw_img)
+        # plt.title('Car Positions')
+        # plt.subplot(122)
+        # plt.imshow(heatmap, cmap='hot')
+        # plt.title('Heat Map')
+        # plt.draw()
+        # fig.tight_layout()
+    for i in range(3):
+        [valid, img] = cap.read()
 
 
 
-    #        for rec in rectangles:
-    #            cv2.rectangle(out_img, tuple(rec[0]),
-    #                      tuple(rec[1]), (0, 0, 255), 6)
 
-    #plt.imshow(out_img)
-    #cv2.imshow("ventana",out_img)
-    #    if i==1:
-    #        cv2.imwrite("mulpiple_sizes_detection.jpg",out_img)
-    #cv2.waitKey(1)
+        #plt.imshow(out_img)
+        #cv2.imshow("ventana",out_img)
+        #    if i==1:
+        #        cv2.imwrite("mulpiple_sizes_detection.jpg",out_img)
+        #cv2.waitKey(1)
+
+
 pass
+
+
+
+

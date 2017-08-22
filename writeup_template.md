@@ -1,5 +1,3 @@
-
-
 ##Writeup Template
 ###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
@@ -10,7 +8,7 @@
 The goals / steps of this project are the following:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
-* Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector.
+* Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector. 
 * Note: for those first two steps don't forget to normalize your features and randomize a selection for training and testing.
 * Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
 * Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
@@ -40,23 +38,7 @@ You're reading it!
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-
-I start evaluating witch color space and number of bins are the best combination for color classification.
-
-The best result was HSV, with size of 16x16 and 32 bins. You can see full report of different combinations in the files [one](./color_Clasifier_16_16.txt) and [two](./color_Clasifier_16_32.txt)
-
-The code could be checked in color_classifier.py
-
-After that I've repeated the same with HOG. I did a loop with channels and color spaces, the result could be checked in the [file](./trainer_result.txt) the best combination was the
-Starting YCrCb in channel :ALL
-115.13 Seconds to extract HOG features...
-Using: 9 orientations 8 pixels per cell and 2 cells per block
-Feature vector length: 5292
-13.69 Seconds to train SVC...
-Test Accuracy of SVC =  0.9876
-My SVC predicts:  [ 1.  0.  1.  0.  0.  1.  0.  0.  1.  1.]
-For these 10 labels:  [ 1.  0.  1.  0.  0.  1.  0.  0.  1.  1.]
-0.00295 Seconds to predict 10 labels with SVC
+The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
@@ -71,22 +53,11 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
-At the end I've trained the model using a concatenation of features using  and the best combination of color  classifier.
-
-You can see the feature extraction in the trainer.py file.
-
-Using both techniques I achieve 99.3% for LUV with 3channels and SHV color space. 99.27% for YUV with 3 channels and SHV and finally, with **YCrCb and the three channels and SHV I get 99.44%**
-
-The full report could be found at [file](./hog_spatial_color_report.txt)
-
-
+I tried various combinations of parameters and...
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using LinearSVC, you can see the code in trainer.py
-
-And finally the scaler and the model are saved in the file model_YCrCb__ALL.p
-
+I trained a linear SVM using...
 
 ###Sliding Window Search
 
@@ -134,3 +105,4 @@ Here's an example result showing the heatmap from a series of frames of video, t
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+

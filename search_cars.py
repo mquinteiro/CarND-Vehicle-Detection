@@ -96,9 +96,49 @@ def search_cars(img,areas):
                 rectangles = rc
     return rectangles
 
-
-# for i in [1,2,3,4,5,6]:
-#     img = cv2.imread('test_images/test'+str(i)+'.jpg')
+def procTestImages():
+    img0=[]
+    img1=[]
+    for i in [1,2,3,4,5,6]:
+        img = cv2.imread('test_images/test'+str(i)+'.jpg')
+        heat = np.zeros_like(img[:, :, 0]).astype(np.float)
+        areas = [[350,625,2.5,2],[350,558,2,2],[400, 540, 1.5,4],[400, 512, 1,2],[400, 464, .5,8]]
+        rectangles1 = search_cars(img,[areas[0]])
+        rectangles2 = search_cars(img, [areas[1]])
+        rectangles3 = search_cars(img, [areas[2]])
+        rectangles4 = search_cars(img, [areas[3]])
+        rectangles5 = search_cars(img, [areas[4]])
+        rectangles = rectangles1 + rectangles2 + rectangles3 + rectangles4 + rectangles5
+        if len(rectangles) > 0:
+            heat = add_heat(heat, rectangles)
+            heat = apply_threshold(heat, 1)
+            heatmap = np.clip(heat, 0, 255)
+            labels = label(heatmap)
+            out_img = img.copy()
+            for rec in rectangles1:
+                cv2.rectangle(out_img, tuple(rec[0]),
+                              tuple(rec[1]), (255, 255, 0), 2)
+            for rec in rectangles2:
+                cv2.rectangle(out_img, tuple(rec[0]),
+                              tuple(rec[1]), (0, 255, 0), 2)
+            for rec in rectangles3:
+                cv2.rectangle(out_img, tuple(rec[0]),
+                              tuple(rec[1]), (0, 0, 255), 2)
+            for rec in rectangles4:
+                cv2.rectangle(out_img, tuple(rec[0]),
+                              tuple(rec[1]), (255, 0, 255), 2)
+            for rec in rectangles5:
+                cv2.rectangle(out_img, tuple(rec[0]),
+                              tuple(rec[1]), (0,255, 255), 2)
+            draw_img = draw_labeled_bboxes(img, labels)
+            cv2.imwrite("output_images/positives_"+str(i)+".png",out_img)
+            cv2.imwrite("output_images/detections_" + str(i) + ".png", draw_img)
+        else:
+            cv2.imwrite("output_images/positives_" + str(i) + ".png", img)
+            cv2.imwrite("output_images/detections_" + str(i) + ".png", img)
+#with the next two lines I can get pictures of widnows detections. For video I comment it
+#procTestImages()
+#exit(0)
 
 cleanImage = False
 videoFileName = 'project_video.mp4'
@@ -109,7 +149,8 @@ heat = np.zeros_like(img[:, :, 0]).astype(np.float)
 frame = 0
 while valid:
     frame+=1
-    areas = [[350,625,2.5,2],[350,558,2,2],[400, 540, 1.5,4],[400, 512, 1,8],[400, 464, .5,8]]
+    #areas = [[350,625,2.5,2],[350,558,2,2],[400, 540, 1.5,4],[400, 512, 1,8],[400, 464, .5,8]]
+    areas = [[350, 625, 2.5, 2], [350, 558, 2, 2], [400, 540, 1.5, 4], [400, 512, 1, 2], [400, 464, .5, 8]]
     heat = heat / 2
     rectangles1 = search_cars(img,[areas[0]])
     rectangles2 = search_cars(img, [areas[1]])
@@ -139,7 +180,8 @@ while valid:
         for rec in rectangles5:
             cv2.rectangle(out_img, tuple(rec[0]),
                           tuple(rec[1]), (0,255, 255), 2)
-        draw_img = draw_labeled_bboxes(out_img, labels)
+        # replace img by out_img if you want to see positive windows.
+        draw_img = draw_labeled_bboxes(img, labels)
         cv2.imshow("ventana", draw_img)
         cv2.imwrite("finalVideo/frame"+str(frame)+".png",draw_img)
         cv2.waitKey(1)
@@ -156,6 +198,7 @@ while valid:
         # plt.title('Heat Map')
         # plt.draw()
         # fig.tight_layout()
+    #reduce image processing jumping 3 frames in each iteration
     for i in range(3):
         [valid, img] = cap.read()
 
